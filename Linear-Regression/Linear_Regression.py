@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # coding: utf-8
+# %%
 
-
-# In[27]:
+# %%
 
 
 import pandas as pd
@@ -11,32 +11,32 @@ import matplotlib.pyplot as plt
 get_ipython().run_line_magic('matplotlib', 'inline')
 
 
-# In[28]:
+# %%
 
 
 df = pd.read_csv("assets/dataset.txt", sep = ",", names = ["id", "longtitude", "latitude", "altitude"])
 
 
-# In[29]:
+# %%
 
 
 df.head()
 
 
-# In[30]:
+# %%
 
 
 #Normalizing Data
 df = (df-df.mean())/df.std()
 
 
-# In[31]:
+# %%
 
 
 valueArray = df.to_numpy()
 
 
-# In[32]:
+# %%
 
 
 #Splitting dataset using 70-30 cross validation technique
@@ -49,7 +49,7 @@ test_X = np.insert(test_X,0,1,axis=1) #Adding bias
 test_Y = valueArray[train_size + 1:, 3:]
 
 
-# In[33]:
+# %%
 
 
 def gradientDescent(X, Y, alpha, maxIterations, weights):
@@ -86,7 +86,7 @@ def gradientDescent(X, Y, alpha, maxIterations, weights):
     return weights
 
 
-# In[34]:
+# %%
 
 
 def gradientDescentWithL1Regularization(X, Y, alpha, maxIterations, weights, regParameter):
@@ -126,7 +126,7 @@ def gradientDescentWithL1Regularization(X, Y, alpha, maxIterations, weights, reg
     return weights
 
 
-# In[35]:
+# %%
 
 
 def gradientDescentWithL2Regularization(X, Y, alpha, maxIterations, weights, regParameter):
@@ -165,7 +165,7 @@ def gradientDescentWithL2Regularization(X, Y, alpha, maxIterations, weights, reg
     return weights
 
 
-# In[36]:
+# %%
 
 
 def stochasticGradientDescent(X, Y, alpha, maxIterations, weights):
@@ -205,7 +205,7 @@ def stochasticGradientDescent(X, Y, alpha, maxIterations, weights):
     return weights
 
 
-# In[37]:
+# %%
 
 
 def normalEquations(X, Y):
@@ -222,50 +222,46 @@ def normalEquations(X, Y):
     return weights
 
 
-# In[38]:
+# %%
 
 
 #Training our models
 
 
-# In[39]:
+# %%
 
 
 batch_weights = gradientDescent(train_X, train_Y, 0.01, 2000, np.zeros([1,3]))
 
 
-# In[40]:
+# %%
 
 
 L1_weights = gradientDescentWithL1Regularization(train_X, train_Y, 0.02, 2000, np.zeros([1,3]), 0.7)
 
 
-# In[41]:
+# %%
 
 
 L2_weights = gradientDescentWithL2Regularization(train_X, train_Y, 0.015, 2000, np.zeros([1,3]), 0.8)
 
 
-# In[ ]:
+# %%
 
 
 stochastic_weights = stochasticGradientDescent(train_X, train_Y, 0.05, 350, np.zeros([1,3]))
 
 
-# In[ ]:
+# %%
 
 
 normal_weights = normalEquations(train_X, train_Y)
 
 
-# In[ ]:
+# %%
 
 
 #Testing our models
 
 
-# In[ ]:
-
-
-
-
+# %%
