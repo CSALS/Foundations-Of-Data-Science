@@ -193,7 +193,6 @@ if __name__ == "__main__":
 
     X = get_polyfeatures(X, 6)
     # data preprocessing (Normal scaling)
-    """
     mscaler = NormalScaler()
     for j in range(X.shape[1]):
         mscaler.fit(X[:,j])
@@ -227,8 +226,7 @@ if __name__ == "__main__":
     print("weights: ",model.W)
     # print()
     # print("Total Cost: ",model.cost)
-    
-    """
+
 
     # visualization of cost function.
 
