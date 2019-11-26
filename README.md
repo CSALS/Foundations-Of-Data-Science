@@ -1,0 +1,1 @@
+Solutions to assignments of foundations of data science course.
